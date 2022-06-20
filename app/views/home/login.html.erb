@@ -1,0 +1,9 @@
+<div style="text-align: center; padding-top: 50px;">
+<h1>Log in</h1>
+<p style="color: red"> <%= alert %> </p>
+<%= form_with url: home_login_path , method: :post do |form| %>
+  <p>メールアドレス<br><%= form.text_field :email %></p>
+  <p>パスワード<br><%= form.text_field :password %></p>
+  <p><%= form.submit 'log in', class: 'btn btn-success btn-sm'%></p>
+  <% end %>
+</div>

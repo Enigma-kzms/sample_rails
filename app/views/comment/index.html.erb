@@ -1,0 +1,30 @@
+<h1>Attack lists</h1>
+<% if alert %>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <%= alert %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<!--  <h6 style="color: red" class="alert alert-danger"><svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#exclamation-triangle-fill"/></svg><%#= alert %></h6>-->
+<% end %>
+  <li class="list-group-item list-group-item-secondary">
+  <h5>投稿スレッド</h5>
+  <%= form_with url: comment_confirm_path, method: :post do |form| %>
+    <%= form.select :select, @forms %>
+  </li>
+  <li class="list-group-item list-group-item-info">
+    <h5>投稿コメント</h5><h6>(※チェックした上から順番に投稿されます)</h6>
+    <% @comment.each do |comment| %>
+      <%= form.check_box :check_box, {multiple: true}, comment.id, nil %>
+      <%= comment.text %>
+      <br />
+    <% end %>
+  </li>
+  <li class="list-group-item list-group-item-danger">
+  <h5>投稿間隔</h5>
+    <%= form.select :min, [['1分', 1], ['3分', 3],['5分', 5], ['10分', 10]] %>
+  </li>
+    <div style="text-align: center; padding-top: 10px"><%= form.submit '確認', class: 'btn btn-warning' %></div>
+  <% end %>
+<br><br>
+<%= link_to 'BACK TO LISTS', comment_index_path %>
+

@@ -1,0 +1,12 @@
+<div style="text-align: center; padding-top: 50px;">
+  <h2>Hello</h2>
+  <h5 style="color: red"> <%= notice %> </h5>
+  <% if @name %>
+    <p>ようこそ！ <%= @name %>様</p>
+    <p><%= button_to "log out", home_logout_path, method: :post, class: 'btn btn-success btn-sm'%></p>
+    <p><%= link_to "コメントリストへ", comment_index_path %></p>
+  <% else %>
+    <p><%= link_to "sign up", home_signup_path, class: 'btn btn-outline-primary' %></p>
+    <p><%= link_to "log in", home_login_path, class: 'btn btn-outline-secondary' %></p>
+  <% end %>
+</div>

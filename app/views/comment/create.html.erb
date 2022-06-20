@@ -1,0 +1,7 @@
+<h1>Create comment</h1>
+<h3 style="color: red"><%= alert %></h3>
+<%= form_with url: comment_index_path, method: :post do |form| %>
+  <%= form.text_field :comment %>
+  <%= form.submit 'confirm', class: 'btn btn-secondary btn-sm' %>
+<% end %>
+<%= link_to "戻る", comment_index_path %>

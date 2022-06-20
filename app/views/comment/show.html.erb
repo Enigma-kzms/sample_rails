@@ -1,0 +1,31 @@
+<li class="list-group-item list-group-item-info">
+  <%= render partial: 'prof'%>
+</li>
+<br>
+<h2>Comments list</h2>
+<% if alert %>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <%= alert %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+<% if @comment %>
+  <% @comment.each do |comment| %>
+    <ul class="list-group">
+      <li class="list-group-item"><%= comment.text %></li>
+    </ul>
+    <div style="text-align: right; padding-top: 5px">
+    <div style="float: right; padding-left: 5px"><%= button_to 'edit', edit_comment_path(:id => comment.id), method: :get, class: 'btn btn-outline-success btn-sm' %></div>
+    <div><%= button_to 'delete', comment_path(:id => comment.id), method: :delete, class: 'btn btn-outline-danger btn-sm' %></div>
+    </div>
+    <br>
+  <% end %>
+<% end %>
+
+<div style="text-align: right">
+  <%= button_to '新規コメント作成', comment_index_path, method: :post, class: 'btn btn-secondary btn-sm' %>
+</div>
+<br>
+<div style="text-align: right">
+  <%= button_to '投稿する', comment_index_path('attack'), method: :get, class: 'btn btn-warning' %>
+</div>

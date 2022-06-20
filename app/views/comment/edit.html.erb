@@ -1,0 +1,7 @@
+<h1>Editting comment</h1>
+<h3 style="color: red"><%= alert %></h3>
+<%= form_with url: edit_comment_path(:id => params[:id]), method: :get do |form| %>
+  <%= form.text_field :comment, value: @comment %>
+  <%= form.submit 'confirm', class: 'btn btn-secondary btn-sm' %>
+<% end %>
+<p><%= link_to '戻る', comment_index_path %></p>

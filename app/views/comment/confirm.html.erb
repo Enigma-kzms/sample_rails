@@ -1,0 +1,16 @@
+<h1>Confirm</h1>
+<h3>投稿スレッド</h3>
+<%= @thread %>
+<br>
+<h3>コメント（順番）</h3>
+<% @text.each_with_index do |texts, index| %>
+  <%= index + 1 %>番目の投稿：  <%= texts %>
+  <br>
+<% end %>
+<br>
+<h3>投稿間隔</h3>
+<%= @min %>分
+<br><br>
+<%= button_to '投稿！', comment_excute_path(:thread => @thread, :text => @text, :min => @min) %>
+<br><br>
+<%= link_to '戻る', comment_index_path %>

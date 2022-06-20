@@ -1,0 +1,21 @@
+<div style="text-align: center; padding-top: 50px;">
+  <h2>Sign up</h2>
+  <p style="color: red"> <%= alert %> </p>
+  <% unless @confirm %>
+    <%= form_with url: home_signup_path, method: :post do |form| %>
+      <p>名前<br><%= form.text_field :name, value: @name %></p>
+      <p>email<br><%= form.text_field :email, value: @email %></p>
+      <p>パスワード<br><%= form.text_field :password %></p>
+      <p>パスワード（確認）<br><%= form.text_field :password_confirm %></p>
+      <p><%= form.submit '確認', class: 'btn btn-success btn-sm'%></p>
+    <% end %>
+  <% end %>
+
+  <% if @confirm %>
+    <p>名前<br><%= @confirm[:name] %></p>
+    <p>email<br><%= @confirm[:email] %></p>
+    <p>パスワード<br><%= @confirm[:password_confirm] %></p>
+    <p><%= button_to "登録", home_create_path(:name => @confirm[:name], :email => @confirm[:email], :password => @confirm[:password_confirm]), method: :post, class: 'btn btn-success btn-sm' %></p>
+  <% end %>
+</div>
+
